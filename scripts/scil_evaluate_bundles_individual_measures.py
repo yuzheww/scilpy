@@ -125,9 +125,9 @@ def compute_measures(filename_tuple):
     endpoints_map_tail_roi = \
         np.where(endpoints_map_tail != 0, 1, endpoints_map_tail)
     end_sur_area_head = \
-        approximate_surface_node(endpoints_map_head_roi) * (voxel_size[0] ** 2)
+        np.count_nonzero(endpoints_map_head_roi) * (voxel_size[0] ** 2)
     end_sur_area_tail = \
-        approximate_surface_node(endpoints_map_tail_roi) * (voxel_size[0] ** 2)
+        np.count_nonzero(endpoints_map_tail_roi) * (voxel_size[0] ** 2)
 
     endpoints_coords_head = np.array(np.where(endpoints_map_head_roi)).T
     endpoints_coords_tail = np.array(np.where(endpoints_map_tail_roi)).T
